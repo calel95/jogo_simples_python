@@ -2,20 +2,22 @@ import random
 def jogar():
     print("FORCA")
 
-    #FAZ A ABERTURA DO ARQUIVO, ONDE ESTÁ AS PALAVRAS SECRETAS, E ESCOLHE UMA ALEATÓRIAMENTE E SELECIONA NO JOGO
-    #arq = open("palavras.txt", "r", encoding="utf-8")
-    with open("palavras.txt", encoding="utf-8") as arq:
-        palavras_arquivo = []
-        for i in arq:
-            palavras_arquivo.append(i.replace("\n","").upper())
-            print(i)
-    print(palavras_arquivo)
-    palavra_secreta = ''.join(random.choices(palavras_arquivo))  #join passa a palavra da lista extraida pra string, unindo todas as palavras em uma
+    def escolha_palavra():
+        #FAZ A ABERTURA DO ARQUIVO, ONDE ESTÁ AS PALAVRAS SECRETAS, E ESCOLHE UMA ALEATÓRIAMENTE E SELECIONA NO JOGO
+        #arq = open("palavras.txt", "r", encoding="utf-8")
+        with open("palavras.txt", encoding="utf-8") as arq:
+            palavras_arquivo = []
+            for i in arq:
+                palavras_arquivo.append(i.replace("\n","").upper())
+                print(i)
+        print(palavras_arquivo)
+        palavra_chave = ''.join(random.choices(palavras_arquivo))  #join passa a palavra da lista extraida pra string, unindo todas as palavras em uma
+        return palavra_chave
 
-    print(palavra_secreta)
-
+    #print(palavra_secreta)
     #DEFINE AS VARIÁVEIS, E RECRIA A PALAVRA SECRETA, PARA COMPARAR COM A ORIGINAL NO FINAL
     #palavra_secreta = 'banana'.upper()
+    palavra_secreta = escolha_palavra()
     palavra_secreta2 = list(palavra_secreta)
     perdeu = False
     erros = 0
